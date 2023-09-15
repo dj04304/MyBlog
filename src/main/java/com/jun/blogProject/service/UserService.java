@@ -1,12 +1,10 @@
 package com.jun.blogProject.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jun.blogProject.model.User;
 import com.jun.blogProject.repository.UserRepository;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 // Bean에 등록

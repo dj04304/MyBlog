@@ -23,6 +23,6 @@ public class UserApiController {
 		System.out.println("UserApiController: save");
 		user.setRole(RoleType.USER); // role 만 강제로 넣어줌
 		int result = userService.save(user);
-		return new ResponseDto<Integer>(HttpStatus.OK, result);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
 	}
 }
