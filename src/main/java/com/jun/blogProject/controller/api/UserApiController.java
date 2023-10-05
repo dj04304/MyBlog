@@ -1,6 +1,7 @@
 package com.jun.blogProject.controller.api;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +18,12 @@ import lombok.RequiredArgsConstructor;
 public class UserApiController {
 	
 	private final UserService userService;
+	
 
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		System.out.println("UserApiController: save");
-		user.setRole(RoleType.USER); // role 만 강제로 넣어줌
+	
 		userService.save(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}

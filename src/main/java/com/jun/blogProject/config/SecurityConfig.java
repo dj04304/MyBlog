@@ -12,11 +12,13 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableGlobalMethodSecurity (prePostEnabled = true)// 특정 주소로 접근시 권한 및 인증을 미리 체크하겠다는 뜻
 public class SecurityConfig{
 	
+	
 	@Bean
 	public SecurityFilterChain filter(HttpSecurity http) throws Exception {
 		http
+			.csrf().disable() // csrf 토큰 비활성화 
 			.authorizeRequests()
-				.antMatchers("/auth/**")
+				.antMatchers("/", "/auth/**", "/js/**", "/css/**", "/img/**")
 				.permitAll()
 				.anyRequest()
 				.authenticated()
