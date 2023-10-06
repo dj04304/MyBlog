@@ -17,7 +17,14 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Board {
 	
 	@Id
@@ -30,7 +37,6 @@ public class Board {
 	@Lob //대용량 데이터가 필요할 때 사용
 	private String content;
 	
-	@ColumnDefault("0")
 	private int count; //조회수
 	
 	//fetch = FetchType.EAGER => Board테이블을 Select하면 바로 user정보를 가져온다는 ManyToOne의 default이다.
