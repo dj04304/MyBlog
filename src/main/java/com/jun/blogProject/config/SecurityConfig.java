@@ -11,8 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity // 시큐리티 필터 등록
 @EnableGlobalMethodSecurity (prePostEnabled = true)// 특정 주소로 접근시 권한 및 인증을 미리 체크하겠다는 뜻
 public class SecurityConfig{
-	
-	
+
 	@Bean
 	public SecurityFilterChain filter(HttpSecurity http) throws Exception {
 		http
@@ -25,7 +24,9 @@ public class SecurityConfig{
 				
 			.and()
 				.formLogin()
-				.loginPage("/auth/loginForm");
+				.loginPage("/auth/loginForm")
+				.loginProcessingUrl("/auth/loginProc") //스프링 시큐리티가 해당 주소로 요청오는 로그인을 가로채서 대신 로그인함.
+				.defaultSuccessUrl("/");
 		
 		return http.build();
 		
