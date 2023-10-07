@@ -80,14 +80,14 @@ public class DummyController {
 	// 한 페이지 당 두 건의 데이터를 return
 	//@PageableDefault 2건 (size) 순서는 id로 (sort) 
 	@GetMapping("/dummy/user")
-	public List<User> pageList(@PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+	public Page<User> pageList(@PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 //		List<User> users =  userRepository.findAll(pageable).getContent();
 		
 		Page<User> pagingUsers = userRepository.findAll(pageable);
 		
 		List<User> users = pagingUsers.getContent();
 		
-		return users;
+		return pagingUsers;
 	}
 	
 	@GetMapping("/dummy/users")

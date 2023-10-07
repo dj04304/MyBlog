@@ -1,14 +1,13 @@
 package com.jun.blogProject.service;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jun.blogProject.model.Board;
-import com.jun.blogProject.model.RoleType;
 import com.jun.blogProject.model.User;
 import com.jun.blogProject.repository.BoardRepository;
-import com.jun.blogProject.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,5 +24,10 @@ public class BoardService {
 		board.setUserId(user);
 		boardRepository.save(board);
 	}
+	
+	public Page<Board> writeList(Pageable pageable) {
+		return boardRepository.findAll(pageable);
+	}
+
 	
 }

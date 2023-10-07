@@ -17,7 +17,7 @@ public class SecurityConfig{
 		http
 			.csrf().disable() // csrf 토큰 비활성화 
 			.authorizeRequests()
-				.antMatchers("/", "/auth/**", "/js/**", "/css/**", "/img/**")
+				.antMatchers("/", "/auth/**", "/js/**", "/css/**", "/img/**" , "/dummy/**")
 				.permitAll()
 				.anyRequest()
 				.authenticated()
