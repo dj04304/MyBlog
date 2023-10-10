@@ -6,6 +6,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.jun.blogProject.service.BoardService;
 
@@ -23,6 +24,13 @@ public class BoardController {
 		
 //		System.out.println("User ID: " + principal.getUsername());
 		return "index"; // 일반 Controller 기 때문에 viewResolver 작동이된다.
+	}
+	
+	@GetMapping("/board/{id}")
+	public String findById(@PathVariable int id, Model model) {
+		model.addAttribute("board", boardService.writeDetail(id));
+		
+		return "board/detail";
 	}
 	
 	@GetMapping("/board/saveForm")

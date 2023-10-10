@@ -29,5 +29,11 @@ public class BoardService {
 		return boardRepository.findAll(pageable);
 	}
 
+	public Board writeDetail(int id) {
+		return boardRepository.findById(id)
+					.orElseThrow(() -> {
+						return new IllegalArgumentException("writeDetail is failed: Not Found ID.");
+					});
+	}
 	
 }
