@@ -42,7 +42,7 @@ public class Board {
 	//fetch = FetchType.EAGER => Board테이블을 Select하면 바로 user정보를 가져온다는 ManyToOne의 default이다.
 	@ManyToOne(fetch = FetchType.EAGER) //Many = board, User = one (여러개의 게시글은 한명에 의해서 쓰일 수 있다.)
 	@JoinColumn(name="userId")
-	private User userId; //DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
+	private User user; //DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
 	
 	// mappedBy는 연관관계의 주인이 아니다.(FK가 아니니 DB에 컬럼을 만들지 말라는 뜻이다.)
 	// fetch = FetchType.LAZY => 필요하면 들고오고, 아니면 들고오지 않는다는 OneToMany 의 default이다.

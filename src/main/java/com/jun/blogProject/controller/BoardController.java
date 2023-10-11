@@ -1,5 +1,7 @@
 package com.jun.blogProject.controller;
 
+import java.util.List;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.jun.blogProject.model.Board;
 import com.jun.blogProject.service.BoardService;
 
 import lombok.RequiredArgsConstructor;

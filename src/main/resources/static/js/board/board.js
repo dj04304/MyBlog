@@ -3,6 +3,9 @@ let index = {
 		$("#btn-save").on("click", ()=> { // this를 바인딩하기위한 화살표함수
 			this.save();
 		});
+		$("#btn-delete").on("click", ()=> { // this를 바인딩하기위한 화살표함수
+			this.deleteById();
+		});
 	},
 	
 	save: function() {
@@ -32,7 +35,25 @@ let index = {
 			alert(JSON.stringify(error));
 		}); 
 		
-	}
+	},
+	
+	deleteById: function() {
+		let id = $("#id").text();
+		
+		$.ajax({
+			type: "DELETE",
+			url: "/api/board/" + id,
+			dataType: "json" //응답이 왔을 때 기본적으로 모든 것이 String으로 온다. (생긴게 JSON이라면 javascript오브젝트로 변경)
+		}).done(function(resp){
+			alert("게시글 삭제 완료");
+			console.log(resp);
+			location.href= "/"
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		}); 
+		
+	},
+	
 	
 }
 
